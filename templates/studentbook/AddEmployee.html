@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Employee</title>
+    <style>
+    div {
+            background-color: lightgrey;
+            width: 1500px;
+            border: 15px solid green;
+            padding: 50px;
+            margin: 50px;
+        }
+    </style>
+  </head>
+
+  <body>
+  <form action="{% url 'addemployee' %}" method="post">
+  {% csrf_token %}
+  <h1>Add Employee</h1>
+	<table border="1">
+   <thead>
+        <tr>
+            <th>Emp_Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>IsAdmin</th>
+            <th>Department</th>
+            <th>username</th>
+            <th>email</th>
+            <th>password</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>{{form.name}}</td>
+              <td>{{form.address}}</td>
+              <td>{{form.phone}}</td>
+              <td>{{form.isadmin}}</td>
+              <td>{{form.department}}</td>
+              <td>{{form.username}}</td>
+              <td>{{form.email}}</td>
+              <td>{{form.password}}</td>
+          </tr>
+      </tbody>
+	 </table>
+      <input type="submit" value="submit">
+
+     <!-- <table>
+        {{ form }}
+	 </table>
+
+        <input type="submit" value="submit">-->
+
+	</form>
+  </body>
+</html>

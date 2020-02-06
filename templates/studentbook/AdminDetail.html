@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Employee Detail</title>
+    <style>
+    div {
+            background-color: lightgrey;
+            width: 400px;
+            border: 15px solid green;
+            padding: 50px;
+            margin: 50px;
+        }
+    </style>
+  </head>
+
+  <body>
+  <form action="{% url 'detail' %}" method="get">
+  {% csrf_token %}
+    <h1>Employee_Detail</h1>
+    <div>
+	<table border="10">
+      <thead>
+        <tr>
+            <th>Emp_Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Department</th>
+            <th>IsAdmin</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for fly in obj %}
+          <tr>
+              <td>{{fly.name}}</td>
+              <td>{{fly.address}}</td>
+              <td>{{fly.phone}}</td>
+              <td>{{fly.department}}</td>
+              <td>{{fly.isadmin}}</td>
+          </tr>
+      {% endfor %}
+      </tbody>
+	 </table>
+    </div>
+	</form>
+  </body>
+</html>

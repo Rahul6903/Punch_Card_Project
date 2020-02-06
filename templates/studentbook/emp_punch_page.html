@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+</head>
+<body>
+<ul class="nav nav-pills">
+
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'punch'%}">Punch</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'detail' %}">Detail</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link active" href="{% url 'logouts' %}">logout</a>
+  </li>
+</ul>
+{% endblock content %}
+</body>
+</html>

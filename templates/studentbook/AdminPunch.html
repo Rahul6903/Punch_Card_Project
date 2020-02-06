@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AdminPunch</title>
+    <style>
+    div {
+            background-color: lightgrey;
+            width: 400px;
+            border: 15px solid green;
+            padding: 50px;
+            margin: 50px;
+        }
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+  </head>
+
+  <body>
+  <form action="{% url 'punch_admin' %}" method="get">
+  {% csrf_token %}
+    <h1>PunchAdmin</h1>
+    <h2>{{ currMonth }}, {{ currYear}}</h2>
+    <table>
+        <th>Name</th>
+        {% for i in "x"|rjust:lastDayCurrMonth %}
+        <th>{{forloop.counter}}</th>
+        {% endfor %}
+        {% for key,value in attendance.items %}
+        <tr>
+            <td>{{key}}</td>
+            {% with tt=value%}
+                {% for key,value in tt.items %}
+                    {% ifequal value.intime comp %}
+                        <td></td>
+                    {% else %}
+                        <td>{{value.intime}},{{value.outtime}}</td>
+                    {%endifequal%}
+                {% endfor %}
+            {% endwith %}
+        </tr>
+        {% endfor %}
+    </table>
+      <center>
+          <a href="{% url 'previous' %}"><strong>PREV</strong></a>
+          <a href="{% url 'next' %} "><strong>NEXT</strong></a>
+            </center>
+
+	</form>
+  </body>
+</html>

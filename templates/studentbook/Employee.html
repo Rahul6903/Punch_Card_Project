@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'studentbook/emp_punch_page.html' %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Employee</title>
+    <style>
+    div {
+            background-color: lightgrey;
+            width: 500px;
+            border: 15px solid green;
+            padding: 50px;
+            margin: 50px;
+        }
+    </style>
+    {% include 'studentbook/emp_punch_header.html'%}
+  </head>
+
+  <body>
+  {% block content %}
+  <form action="{% url 'employee' %}" method="get">
+  {% csrf_token %}
+    <h1>Employee</h1>
+    <div>
+	<table border="10">
+      <thead>
+        <tr>
+		  <th>ID</th>
+          <th>Emp_Name</th>
+            <th>address</th>
+          <th>Phone</th>
+          <th>Department</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fly in form %}
+          <tr>
+			<td>{{fly.empid}}</td>
+            <td>{{ fly.name }}</td>
+              <td>{{ fly.address }}</td>
+            <td>{{ fly.phone }}</td>
+            <td>{{ fly.department }}</td>
+
+          </tr>
+        {% endfor %}
+      </tbody>
+	 </table>
+    </div>
+	</form>
+	{% endblock content %}
+  </body>
+</html>

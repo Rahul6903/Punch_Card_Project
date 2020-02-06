@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Detail</title>
+    <style>
+    div {
+            background-color: lightgrey;
+            width: 400px;
+            border: 15px solid green;
+            padding: 50px;
+            margin: 50px;
+        }
+    </style>
+  </head>
+
+  <body>
+  <form action="{% url 'detail' %}" method="get">
+  {% csrf_token %}
+    <h1>Employee_Detail</h1>
+	<table border="5">
+      <thead>
+        <tr>
+            <th>Emp_Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Department</th>
+            <th>IsAdmin</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>{{obj.name}}</td>
+              <td>{{obj.address}}</td>
+              <td>{{obj.phone}}</td>
+              <td>{{obj.department}}</td>
+              <td>{{obj.isadmin}}</td>
+          </tr>
+      </tbody>
+	 </table>
+	    <table border="5">
+        <thead>
+            <tr>
+                <th>Punchin</th>
+                <th>Punchout</th>
+                <th>Date</th>
+            </tr>
+      </thead>
+            {% for i in obj1 %}
+      <tbody>
+          <tr>
+              <td>{{i.punchin}}</td>
+              <td>{{i.punchout}}</td>
+              <td>{{i.date}}</td>
+          </tr>
+      </tbody>
+            {%endfor%}
+	 </table>
+
+
+	</form>
+  </body>
+</html>
